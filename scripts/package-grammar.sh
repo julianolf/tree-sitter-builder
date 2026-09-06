@@ -7,9 +7,4 @@ set -euo pipefail
 
 ARCHIVE="${GRAMMAR_NAME}-${TARGET}.tar.gz"
 
-tar \
-	--owner=0 \
-	--group=0 \
-	--numeric-owner \
-	-czf "${ARCHIVE}" \
-	-C dist .
+tar -czf "${ARCHIVE}" -C dist .
