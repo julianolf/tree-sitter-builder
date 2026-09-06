@@ -58,6 +58,7 @@ jobs:
           merge-multiple: true
       - name: Publish release
         env:
+          GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
           GRAMMAR_NAME: ${{ inputs.grammar-name }}
         run: gh release create "$TAG" --title "$TAG" --generate-notes "dist/$GRAMMAR_NAME-*.tar.gz"
