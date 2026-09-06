@@ -1,0 +1,27 @@
+name: Build Tree-sitter grammar
+description: Build and package a Tree-sitter grammar
+inputs:
+  grammar-name:
+    description: Grammar name
+    required: true
+  extension:
+    description: Parser library extension
+    required: true
+  target:
+    description: Package target (system-architecture)
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Build grammar
+      shell: bash
+      env:
+        GRAMMAR_NAME: ${{ inputs.grammar-name }}
+        EXTENSION: ${{ inputs.extension }}
+      run: ${{ github.action_path }}/scripts/build-grammar.sh
+    - name: Package grammar
+      shell: bash
+      env:
+        GRAMMAR_NAME: ${{ inputs.grammar-name }}
+        TARGET: ${{ inputs.target }}
+      run: ${{ github.action_path }}/scripts/package-grammar.sh
