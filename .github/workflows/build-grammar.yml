@@ -1,15 +1,16 @@
 name: Build Tree-sitter grammar
 on:
   workflow_call:
-    grammar-name:
-      description: Grammar name to use in the package names
-      required: true
-      type: string
-    cli-version:
-      description: Tree-sitter CLI version
-      required: false
-      type: string
-      default: "0.27.0"
+    inputs:
+      grammar-name:
+        description: Grammar name to use in the package names
+        required: true
+        type: string
+      cli-version:
+        description: Tree-sitter CLI version
+        required: false
+        type: string
+        default: "0.27.0"
 permissions:
   contents: write
 jobs:
