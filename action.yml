@@ -10,6 +10,10 @@ inputs:
   target:
     description: Package target (system-architecture)
     required: true
+outputs:
+  archive:
+    descrition: Archive name
+    value: ${{ steps.package.outputs.archive }}
 runs:
   using: composite
   steps:
@@ -20,6 +24,7 @@ runs:
         EXTENSION: ${{ inputs.extension }}
       run: ${{ github.action_path }}/scripts/build-grammar.sh
     - name: Package grammar
+      id: package
       shell: bash
       env:
         GRAMMAR_NAME: ${{ inputs.grammar-name }}
