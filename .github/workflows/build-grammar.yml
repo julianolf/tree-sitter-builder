@@ -65,5 +65,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
-          GRAMMAR_NAME: ${{ inputs.grammar-name }}
-        run: gh release create "$TAG" --title "$TAG" --generate-notes "dist/tree-sitter-${GRAMMAR_NAME}-*.tar.gz"
+          PATTERN: dist/tree-sitter-${{ inputs.grammar-name }}-*.tar.gz
+        run: gh release create "$TAG" --title "$TAG" --generate-notes "$PATTERN"
