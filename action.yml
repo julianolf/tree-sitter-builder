@@ -12,7 +12,7 @@ inputs:
     required: true
 outputs:
   archive:
-    descrition: Archive name
+    description: Archive name
     value: ${{ steps.package.outputs.archive }}
 runs:
   using: composite
